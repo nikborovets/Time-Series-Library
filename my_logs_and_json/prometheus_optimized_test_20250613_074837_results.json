@@ -1,0 +1,32 @@
+{
+  "DLinear": {
+    "success": true,
+    "duration": 385.09451627731323,
+    "timestamp": "2025-06-13T07:55:02.689647",
+    "stdout_last_1000": "0433\n\tspeed: 0.0127s/iter; left time: 385.2114s\n\titers: 600, epoch: 20 | loss: 0.2591564\n\tspeed: 0.0074s/iter; left time: 224.0763s\n\titers: 700, epoch: 20 | loss: 0.2803685\n\tspeed: 0.0083s/iter; left time: 248.1597s\n\titers: 800, epoch: 20 | loss: 0.3204848\n\tspeed: 0.0116s/iter; left time: 347.3175s\n\titers: 900, epoch: 20 | loss: 0.3367584\n\tspeed: 0.0123s/iter; left time: 366.4592s\nEpoch: 20 cost time: 11.561657428741455\nEpoch: 20, Steps: 991 | Train Loss: 0.3135482 Vali Loss: 0.2921109 Test Loss: 0.5165353\nEarlyStopping counter: 10 out of 10\nEarly stopping\n>>>>>>>testing : long_term_forecast_DLinear_prometheus_optimized_DLinear_prometheus_ftS_sl48_ll24_pl24_dm256_nh4_el2_dl1_df1024_expand2_dc4_fc5_ebtimeF_dtTrue_prometheus_optimized_highfreq_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\nWARNING: Found 2 NaN and 0 inf values, replacing with 0\ntest 9041\ntest shape: (9041, 24, 1) (9041, 24, 1)\ntest shape: (9041, 24, 1) (9041, 24, 1)\nmse:0.5098989009857178, mae:0.4796261191368103, dtw:Not calculated\n"
+  },
+  "LightTS": {
+    "success": true,
+    "duration": 666.5491034984589,
+    "timestamp": "2025-06-13T08:06:19.250823",
+    "stdout_last_1000": "30024\n\tspeed: 0.0126s/iter; left time: 255.5331s\n\titers: 600, epoch: 30 | loss: 0.2927326\n\tspeed: 0.0122s/iter; left time: 246.4549s\n\titers: 700, epoch: 30 | loss: 0.2151708\n\tspeed: 0.0102s/iter; left time: 204.4520s\n\titers: 800, epoch: 30 | loss: 0.3907871\n\tspeed: 0.0100s/iter; left time: 201.1190s\n\titers: 900, epoch: 30 | loss: 0.3074661\n\tspeed: 0.0101s/iter; left time: 201.5231s\nEpoch: 30 cost time: 11.50883960723877\nEpoch: 30, Steps: 991 | Train Loss: 0.3009012 Vali Loss: 0.2944580 Test Loss: 0.5152947\nEarlyStopping counter: 10 out of 10\nEarly stopping\n>>>>>>>testing : long_term_forecast_LightTS_prometheus_optimized_LightTS_prometheus_ftS_sl48_ll24_pl24_dm256_nh4_el2_dl1_df1024_expand2_dc4_fc5_ebtimeF_dtTrue_prometheus_optimized_highfreq_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\nWARNING: Found 2 NaN and 0 inf values, replacing with 0\ntest 9041\ntest shape: (9041, 24, 1) (9041, 24, 1)\ntest shape: (9041, 24, 1) (9041, 24, 1)\nmse:0.4933200478553772, mae:0.4620746672153473, dtw:Not calculated\n"
+  },
+  "PatchTST": {
+    "success": true,
+    "duration": 258.5588870048523,
+    "timestamp": "2025-06-13T08:10:47.840450",
+    "stdout_last_1000": "8\n\tspeed: 0.0135s/iter; left time: 529.2912s\n\titers: 600, epoch: 11 | loss: 0.3120316\n\tspeed: 0.0164s/iter; left time: 638.4329s\n\titers: 700, epoch: 11 | loss: 0.3138554\n\tspeed: 0.0171s/iter; left time: 667.0570s\n\titers: 800, epoch: 11 | loss: 0.3790836\n\tspeed: 0.0154s/iter; left time: 598.1139s\n\titers: 900, epoch: 11 | loss: 0.3605843\n\tspeed: 0.0148s/iter; left time: 572.1600s\nEpoch: 11 cost time: 15.380423307418823\nEpoch: 11, Steps: 991 | Train Loss: 0.3148660 Vali Loss: 0.2889817 Test Loss: 0.5209458\nEarlyStopping counter: 10 out of 10\nEarly stopping\n>>>>>>>testing : long_term_forecast_PatchTST_prometheus_optimized_PatchTST_prometheus_ftS_sl48_ll24_pl24_dm256_nh4_el2_dl1_df1024_expand2_dc4_fc5_ebtimeF_dtTrue_prometheus_optimized_highfreq_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\nWARNING: Found 2 NaN and 0 inf values, replacing with 0\ntest 9041\ntest shape: (9041, 24, 1) (9041, 24, 1)\ntest shape: (9041, 24, 1) (9041, 24, 1)\nmse:0.5122954249382019, mae:0.46691781282424927, dtw:Not calculated\n"
+  },
+  "iTransformer": {
+    "success": true,
+    "duration": 300.66864585876465,
+    "timestamp": "2025-06-13T08:15:58.544385",
+    "stdout_last_1000": ": 0.0170s/iter; left time: 649.9591s\n\titers: 600, epoch: 12 | loss: 0.4455735\n\tspeed: 0.0173s/iter; left time: 659.2548s\n\titers: 700, epoch: 12 | loss: 0.3473514\n\tspeed: 0.0164s/iter; left time: 620.6469s\n\titers: 800, epoch: 12 | loss: 0.2926670\n\tspeed: 0.0159s/iter; left time: 600.9963s\n\titers: 900, epoch: 12 | loss: 0.2761282\n\tspeed: 0.0160s/iter; left time: 604.5342s\nEpoch: 12 cost time: 18.327390670776367\nEpoch: 12, Steps: 991 | Train Loss: 0.2971305 Vali Loss: 0.2898448 Test Loss: 0.5314472\nEarlyStopping counter: 10 out of 10\nEarly stopping\n>>>>>>>testing : long_term_forecast_iTransformer_prometheus_optimized_iTransformer_prometheus_ftS_sl48_ll24_pl24_dm256_nh4_el2_dl1_df1024_expand2_dc4_fc5_ebtimeF_dtTrue_prometheus_optimized_highfreq_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\nWARNING: Found 2 NaN and 0 inf values, replacing with 0\ntest 9041\ntest shape: (9041, 24, 1) (9041, 24, 1)\ntest shape: (9041, 24, 1) (9041, 24, 1)\nmse:0.5043447613716125, mae:0.45753252506256104, dtw:Not calculated\n"
+  },
+  "TimesNet": {
+    "success": false,
+    "duration": 3600.2758808135986,
+    "timestamp": "2025-06-13T09:16:08.877253",
+    "error": "Timeout"
+  }
+}

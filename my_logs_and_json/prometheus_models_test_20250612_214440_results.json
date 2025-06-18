@@ -1,0 +1,52 @@
+{
+  "DLinear": {
+    "success": true,
+    "duration": 4305.036648750305,
+    "timestamp": "2025-06-12T22:56:25.552406"
+  },
+  "NLinear": {
+    "success": false,
+    "duration": 4.629331827163696,
+    "timestamp": "2025-06-12T22:57:00.214628"
+  },
+  "PatchTST": {
+    "success": true,
+    "duration": 1787.7151999473572,
+    "timestamp": "2025-06-12T23:27:17.947351"
+  },
+  "iTransformer": {
+    "success": true,
+    "duration": 2975.175081014633,
+    "timestamp": "2025-06-13T00:17:23.215949"
+  },
+  "Autoformer": {
+    "success": false,
+    "duration": 14400,
+    "timestamp": "2025-06-13T04:17:53.466470"
+  },
+  "FEDformer": {
+    "success": false,
+    "duration": 7.382894992828369,
+    "timestamp": "2025-06-13T04:18:30.879540"
+  },
+  "Informer": {
+    "success": false,
+    "duration": 14400,
+    "timestamp": "2025-06-13T08:19:01.137481"
+  },
+  "TimesNet": {
+    "success": false,
+    "duration": 97.43897724151611,
+    "timestamp": "2025-06-13T08:21:08.643605"
+  },
+  "Crossformer": {
+    "success": true,
+    "duration": 8408.563605308533,
+    "timestamp": "2025-06-13T10:41:47.272191"
+  },
+  "Transformer": {
+    "success": false,
+    "duration": 14400,
+    "timestamp": "2025-06-13T14:42:17.500028"
+  }
+}

@@ -1,0 +1,17 @@
+2025-06-13 07:47:49,819 - INFO - 🚀 Начинаем ОПТИМИЗИРОВАННОЕ тестирование моделей на данных из Prometheus
+2025-06-13 07:47:49,819 - INFO - Модели для тестирования: ['DLinear', 'LightTS', 'PatchTST', 'iTransformer', 'TimesNet']
+2025-06-13 07:47:49,819 - INFO - Оптимизированные параметры:
+2025-06-13 07:47:49,819 - INFO -   seq_len: 48 (12 минут)
+2025-06-13 07:47:49,820 - INFO -   pred_len: 24 (6 минут)
+2025-06-13 07:47:49,820 - INFO -   batch_size: 64
+2025-06-13 07:47:49,820 - INFO -   learning_rate: 0.0001
+2025-06-13 07:47:49,820 - INFO -   epochs: 50
+2025-06-13 07:47:49,820 - INFO - Лог файл: prometheus_optimized_test_20250613_074749.log
+2025-06-13 07:47:49,820 - INFO - 
+📊 Прогресс: 1/5
+2025-06-13 07:47:49,821 - INFO - 
+============================================================
+2025-06-13 07:47:49,821 - INFO - Тестирование модели: DLinear
+2025-06-13 07:47:49,821 - INFO - ============================================================
+2025-06-13 07:47:49,821 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 48 --label_len 24 --pred_len 24 --enc_in 1 --dec_in 1 --c_out 1 --d_model 256 --n_heads 4 --e_layers 2 --d_layers 1 --d_ff 1024 --dropout 0.1 --activation gelu --embed timeF --batch_size 64 --learning_rate 0.0001 --train_epochs 50 --patience 10 --lradj cosine --gpu 0 --itr 1 --des prometheus_optimized_highfreq --moving_avg 11 --decomp_method moving_avg --use_norm 1 --factor 5 --augmentation_ratio 1 --jitter --scaling --seed 2021 --use_gpu True --expand 2 --d_conv 4 --model DLinear --model_id DLinear_prometheus_optimized
+2025-06-13 07:47:49,821 - INFO - Начало обучения: 2025-06-13 07:47:49

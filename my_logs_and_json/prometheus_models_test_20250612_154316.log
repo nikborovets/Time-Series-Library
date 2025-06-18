@@ -1,0 +1,14 @@
+2025-06-12 15:43:16,593 - INFO - 🚀 Начинаем тестирование моделей на данных из Prometheus
+2025-06-12 15:43:16,594 - INFO - Модели для тестирования: ['DLinear', 'NLinear', 'PatchTST', 'iTransformer', 'Autoformer', 'FEDformer', 'Informer', 'TimesNet', 'Crossformer', 'Transformer']
+2025-06-12 15:43:16,601 - INFO - Эпохи: 20, Batch size: 16
+2025-06-12 15:43:16,602 - INFO - GPU: Да, Таймаут: 7200s
+2025-06-12 15:43:16,674 - INFO - Данные: 90600 точек с 2025-04-27 18:00:00 по 2025-05-13 11:41:00
+2025-06-12 15:43:16,675 - INFO - Лог файл: prometheus_models_test_20250612_154316.log
+2025-06-12 15:43:16,675 - INFO - 
+📊 Прогресс: 1/10
+2025-06-12 15:43:16,675 - INFO - 
+============================================================
+2025-06-12 15:43:16,676 - INFO - Тестирование модели: DLinear
+2025-06-12 15:43:16,676 - INFO - ============================================================
+2025-06-12 15:43:16,676 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 96 --label_len 48 --pred_len 96 --enc_in 1 --dec_in 1 --c_out 1 --d_model 512 --n_heads 8 --e_layers 2 --d_layers 1 --d_ff 2048 --dropout 0.1 --activation gelu --embed timeF --batch_size 16 --learning_rate 0.0001 --train_epochs 20 --patience 5 --use_gpu true --gpu 0 --itr 1 --des prometheus_test --model DLinear --model_id DLinear_prometheus
+2025-06-12 15:43:16,677 - INFO - Начало обучения: 2025-06-12 15:43:16

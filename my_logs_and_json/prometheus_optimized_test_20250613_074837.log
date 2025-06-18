@@ -1,0 +1,118 @@
+2025-06-13 07:48:37,588 - INFO - 🚀 Начинаем ОПТИМИЗИРОВАННОЕ тестирование моделей на данных из Prometheus
+2025-06-13 07:48:37,588 - INFO - Модели для тестирования: ['DLinear', 'LightTS', 'PatchTST', 'iTransformer', 'TimesNet']
+2025-06-13 07:48:37,588 - INFO - Оптимизированные параметры:
+2025-06-13 07:48:37,589 - INFO -   seq_len: 48 (12 минут)
+2025-06-13 07:48:37,589 - INFO -   pred_len: 24 (6 минут)
+2025-06-13 07:48:37,590 - INFO -   batch_size: 64
+2025-06-13 07:48:37,590 - INFO -   learning_rate: 0.0001
+2025-06-13 07:48:37,590 - INFO -   epochs: 50
+2025-06-13 07:48:37,591 - INFO - Лог файл: prometheus_optimized_test_20250613_074837.log
+2025-06-13 07:48:37,591 - INFO - 
+📊 Прогресс: 1/5
+2025-06-13 07:48:37,591 - INFO - 
+============================================================
+2025-06-13 07:48:37,592 - INFO - Тестирование модели: DLinear
+2025-06-13 07:48:37,592 - INFO - ============================================================
+2025-06-13 07:48:37,593 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 48 --label_len 24 --pred_len 24 --enc_in 1 --dec_in 1 --c_out 1 --d_model 256 --n_heads 4 --e_layers 2 --d_layers 1 --d_ff 1024 --dropout 0.1 --activation gelu --embed timeF --batch_size 64 --learning_rate 0.0001 --train_epochs 50 --patience 10 --lradj cosine --gpu 0 --itr 1 --des prometheus_optimized_highfreq --moving_avg 11 --decomp_method moving_avg --use_norm 1 --factor 5 --augmentation_ratio 1 --jitter --scaling --seed 2021 --use_gpu True --expand 2 --d_conv 4 --model DLinear --model_id DLinear_prometheus_optimized
+2025-06-13 07:48:37,593 - INFO - Начало обучения: 2025-06-13 07:48:37
+2025-06-13 07:55:02,688 - INFO - Время выполнения: 385.09 секунд
+2025-06-13 07:55:02,688 - INFO - ✅ Модель DLinear успешно обучена!
+2025-06-13 07:55:02,688 - INFO - Результаты обучения:
+2025-06-13 07:55:02,688 - INFO -   	iters: 500, epoch: 20 | loss: 0.4300433
+2025-06-13 07:55:02,688 - INFO -   	iters: 600, epoch: 20 | loss: 0.2591564
+2025-06-13 07:55:02,689 - INFO -   	iters: 700, epoch: 20 | loss: 0.2803685
+2025-06-13 07:55:02,689 - INFO -   	iters: 800, epoch: 20 | loss: 0.3204848
+2025-06-13 07:55:02,689 - INFO -   	iters: 900, epoch: 20 | loss: 0.3367584
+2025-06-13 07:55:02,689 - INFO -   Epoch: 20 cost time: 11.561657428741455
+2025-06-13 07:55:02,689 - INFO -   Epoch: 20, Steps: 991 | Train Loss: 0.3135482 Vali Loss: 0.2921109 Test Loss: 0.5165353
+2025-06-13 07:55:02,689 - INFO -   mse:0.5098989009857178, mae:0.4796261191368103, dtw:Not calculated
+2025-06-13 07:55:02,690 - INFO - 💾 Промежуточные результаты сохранены в prometheus_optimized_test_20250613_074837_results.json
+2025-06-13 07:55:02,690 - INFO - ⏳ Пауза 10 секунд перед следующим экспериментом...
+2025-06-13 07:55:12,699 - INFO - 
+📊 Прогресс: 2/5
+2025-06-13 07:55:12,700 - INFO - 
+============================================================
+2025-06-13 07:55:12,700 - INFO - Тестирование модели: LightTS
+2025-06-13 07:55:12,700 - INFO - ============================================================
+2025-06-13 07:55:12,700 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 48 --label_len 24 --pred_len 24 --enc_in 1 --dec_in 1 --c_out 1 --d_model 256 --n_heads 4 --e_layers 2 --d_layers 1 --d_ff 1024 --dropout 0.1 --activation gelu --embed timeF --batch_size 64 --learning_rate 0.0001 --train_epochs 50 --patience 10 --lradj cosine --gpu 0 --itr 1 --des prometheus_optimized_highfreq --moving_avg 11 --decomp_method moving_avg --use_norm 1 --factor 5 --augmentation_ratio 1 --jitter --scaling --seed 2021 --use_gpu True --expand 2 --d_conv 4 --model LightTS --model_id LightTS_prometheus_optimized
+2025-06-13 07:55:12,700 - INFO - Начало обучения: 2025-06-13 07:55:12
+2025-06-13 08:06:19,249 - INFO - Время выполнения: 666.55 секунд
+2025-06-13 08:06:19,249 - INFO - ✅ Модель LightTS успешно обучена!
+2025-06-13 08:06:19,250 - INFO - Результаты обучения:
+2025-06-13 08:06:19,250 - INFO -   	iters: 500, epoch: 30 | loss: 0.2030024
+2025-06-13 08:06:19,250 - INFO -   	iters: 600, epoch: 30 | loss: 0.2927326
+2025-06-13 08:06:19,250 - INFO -   	iters: 700, epoch: 30 | loss: 0.2151708
+2025-06-13 08:06:19,250 - INFO -   	iters: 800, epoch: 30 | loss: 0.3907871
+2025-06-13 08:06:19,250 - INFO -   	iters: 900, epoch: 30 | loss: 0.3074661
+2025-06-13 08:06:19,250 - INFO -   Epoch: 30 cost time: 11.50883960723877
+2025-06-13 08:06:19,250 - INFO -   Epoch: 30, Steps: 991 | Train Loss: 0.3009012 Vali Loss: 0.2944580 Test Loss: 0.5152947
+2025-06-13 08:06:19,250 - INFO -   mse:0.4933200478553772, mae:0.4620746672153473, dtw:Not calculated
+2025-06-13 08:06:19,272 - INFO - 💾 Промежуточные результаты сохранены в prometheus_optimized_test_20250613_074837_results.json
+2025-06-13 08:06:19,272 - INFO - ⏳ Пауза 10 секунд перед следующим экспериментом...
+2025-06-13 08:06:29,279 - INFO - 
+📊 Прогресс: 3/5
+2025-06-13 08:06:29,279 - INFO - 
+============================================================
+2025-06-13 08:06:29,280 - INFO - Тестирование модели: PatchTST
+2025-06-13 08:06:29,280 - INFO - ============================================================
+2025-06-13 08:06:29,280 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 48 --label_len 24 --pred_len 24 --enc_in 1 --dec_in 1 --c_out 1 --d_model 256 --n_heads 4 --e_layers 2 --d_layers 1 --d_ff 1024 --dropout 0.1 --activation gelu --embed timeF --batch_size 64 --learning_rate 0.0001 --train_epochs 50 --patience 10 --lradj cosine --gpu 0 --itr 1 --des prometheus_optimized_highfreq --moving_avg 11 --decomp_method moving_avg --use_norm 1 --factor 5 --augmentation_ratio 1 --jitter --scaling --seed 2021 --use_gpu True --expand 2 --d_conv 4 --model PatchTST --model_id PatchTST_prometheus_optimized --patch_len 8
+2025-06-13 08:06:29,280 - INFO - Начало обучения: 2025-06-13 08:06:29
+2025-06-13 08:10:47,839 - INFO - Время выполнения: 258.56 секунд
+2025-06-13 08:10:47,839 - INFO - ✅ Модель PatchTST успешно обучена!
+2025-06-13 08:10:47,839 - INFO - Результаты обучения:
+2025-06-13 08:10:47,839 - INFO -   	iters: 500, epoch: 11 | loss: 0.2178758
+2025-06-13 08:10:47,839 - INFO -   	iters: 600, epoch: 11 | loss: 0.3120316
+2025-06-13 08:10:47,839 - INFO -   	iters: 700, epoch: 11 | loss: 0.3138554
+2025-06-13 08:10:47,840 - INFO -   	iters: 800, epoch: 11 | loss: 0.3790836
+2025-06-13 08:10:47,840 - INFO -   	iters: 900, epoch: 11 | loss: 0.3605843
+2025-06-13 08:10:47,840 - INFO -   Epoch: 11 cost time: 15.380423307418823
+2025-06-13 08:10:47,840 - INFO -   Epoch: 11, Steps: 991 | Train Loss: 0.3148660 Vali Loss: 0.2889817 Test Loss: 0.5209458
+2025-06-13 08:10:47,840 - INFO -   mse:0.5122954249382019, mae:0.46691781282424927, dtw:Not calculated
+2025-06-13 08:10:47,865 - INFO - 💾 Промежуточные результаты сохранены в prometheus_optimized_test_20250613_074837_results.json
+2025-06-13 08:10:47,865 - INFO - ⏳ Пауза 10 секунд перед следующим экспериментом...
+2025-06-13 08:10:57,871 - INFO - 
+📊 Прогресс: 4/5
+2025-06-13 08:10:57,871 - INFO - 
+============================================================
+2025-06-13 08:10:57,871 - INFO - Тестирование модели: iTransformer
+2025-06-13 08:10:57,871 - INFO - ============================================================
+2025-06-13 08:10:57,872 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 48 --label_len 24 --pred_len 24 --enc_in 1 --dec_in 1 --c_out 1 --d_model 256 --n_heads 4 --e_layers 2 --d_layers 1 --d_ff 1024 --dropout 0.1 --activation gelu --embed timeF --batch_size 64 --learning_rate 0.0001 --train_epochs 50 --patience 10 --lradj cosine --gpu 0 --itr 1 --des prometheus_optimized_highfreq --moving_avg 11 --decomp_method moving_avg --use_norm 1 --factor 5 --augmentation_ratio 1 --jitter --scaling --seed 2021 --use_gpu True --expand 2 --d_conv 4 --model iTransformer --model_id iTransformer_prometheus_optimized --channel_independence 1
+2025-06-13 08:10:57,872 - INFO - Начало обучения: 2025-06-13 08:10:57
+2025-06-13 08:15:58,540 - INFO - Время выполнения: 300.67 секунд
+2025-06-13 08:15:58,543 - INFO - ✅ Модель iTransformer успешно обучена!
+2025-06-13 08:15:58,543 - INFO - Результаты обучения:
+2025-06-13 08:15:58,543 - INFO -   	iters: 500, epoch: 12 | loss: 0.2608821
+2025-06-13 08:15:58,544 - INFO -   	iters: 600, epoch: 12 | loss: 0.4455735
+2025-06-13 08:15:58,544 - INFO -   	iters: 700, epoch: 12 | loss: 0.3473514
+2025-06-13 08:15:58,544 - INFO -   	iters: 800, epoch: 12 | loss: 0.2926670
+2025-06-13 08:15:58,544 - INFO -   	iters: 900, epoch: 12 | loss: 0.2761282
+2025-06-13 08:15:58,544 - INFO -   Epoch: 12 cost time: 18.327390670776367
+2025-06-13 08:15:58,544 - INFO -   Epoch: 12, Steps: 991 | Train Loss: 0.2971305 Vali Loss: 0.2898448 Test Loss: 0.5314472
+2025-06-13 08:15:58,544 - INFO -   mse:0.5043447613716125, mae:0.45753252506256104, dtw:Not calculated
+2025-06-13 08:15:58,591 - INFO - 💾 Промежуточные результаты сохранены в prometheus_optimized_test_20250613_074837_results.json
+2025-06-13 08:15:58,591 - INFO - ⏳ Пауза 10 секунд перед следующим экспериментом...
+2025-06-13 08:16:08,599 - INFO - 
+📊 Прогресс: 5/5
+2025-06-13 08:16:08,600 - INFO - 
+============================================================
+2025-06-13 08:16:08,600 - INFO - Тестирование модели: TimesNet
+2025-06-13 08:16:08,600 - INFO - ============================================================
+2025-06-13 08:16:08,600 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 48 --label_len 24 --pred_len 24 --enc_in 1 --dec_in 1 --c_out 1 --d_model 256 --n_heads 4 --e_layers 2 --d_layers 1 --d_ff 1024 --dropout 0.1 --activation gelu --embed timeF --batch_size 64 --learning_rate 0.0001 --train_epochs 50 --patience 10 --lradj cosine --gpu 0 --itr 1 --des prometheus_optimized_highfreq --moving_avg 11 --decomp_method moving_avg --use_norm 1 --factor 5 --augmentation_ratio 1 --jitter --scaling --seed 2021 --use_gpu True --expand 2 --d_conv 4 --model TimesNet --model_id TimesNet_prometheus_optimized
+2025-06-13 08:16:08,601 - INFO - Начало обучения: 2025-06-13 08:16:08
+2025-06-13 09:16:08,877 - ERROR - ⏰ Таймаут при обучении модели TimesNet
+2025-06-13 09:16:08,891 - INFO - 💾 Промежуточные результаты сохранены в prometheus_optimized_test_20250613_074837_results.json
+2025-06-13 09:16:08,891 - INFO - 
+============================================================
+2025-06-13 09:16:08,891 - INFO - 📋 ФИНАЛЬНЫЙ ОТЧЕТ
+2025-06-13 09:16:08,891 - INFO - ============================================================
+2025-06-13 09:16:08,891 - INFO - ✅ DLinear: 385.1s
+2025-06-13 09:16:08,891 - INFO - ✅ LightTS: 666.5s
+2025-06-13 09:16:08,891 - INFO - ✅ PatchTST: 258.6s
+2025-06-13 09:16:08,891 - INFO - ✅ iTransformer: 300.7s
+2025-06-13 09:16:08,891 - INFO - ❌ TimesNet: Timeout
+2025-06-13 09:16:08,891 - INFO - 
+📊 Итого: 4 успешных, 1 неудачных
+2025-06-13 09:16:08,891 - INFO - 💾 Полные результаты сохранены в: prometheus_optimized_test_20250613_074837_results.json
+2025-06-13 09:16:08,891 - INFO - 📝 Лог сохранен в: prometheus_optimized_test_20250613_074837.log
+2025-06-13 09:16:08,891 - INFO - 
+🏆 Самая быстрая модель: PatchTST (258.6s)

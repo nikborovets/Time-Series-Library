@@ -56,7 +56,7 @@ coverage.xml
 *.pot
 
 # Django stuff:
-*.log
+# *.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -161,7 +161,7 @@ data_loader_all.py
 
 checkpoints/
 results/
-result_long_term_forecast.txt
+
 result_anomaly_detection.txt
 scripts/augmentation/
 run_anylearn.py

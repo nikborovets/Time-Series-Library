@@ -1,0 +1,38 @@
+2025-06-12 21:35:39,105 - INFO - 🚀 Начинаем тестирование моделей на данных из Prometheus
+2025-06-12 21:35:39,106 - INFO - Модели для тестирования: ['DLinear', 'NLinear', 'PatchTST', 'iTransformer', 'Autoformer', 'FEDformer', 'Informer', 'TimesNet', 'Crossformer', 'Transformer']
+2025-06-12 21:35:39,106 - INFO - Эпохи: 80, Batch size: 32
+2025-06-12 21:35:39,106 - INFO - GPU: Да, Таймаут: 14400s
+2025-06-12 21:35:39,106 - INFO - Данные: 90600 точек с 2025-04-27 18:00:00 по 2025-05-13 11:41:00
+2025-06-12 21:35:39,106 - INFO - Лог файл: prometheus_models_test_20250612_213539.log
+2025-06-12 21:35:39,106 - INFO - 
+📊 Прогресс: 1/10
+2025-06-12 21:35:39,106 - INFO - 
+============================================================
+2025-06-12 21:35:39,106 - INFO - Тестирование модели: DLinear
+2025-06-12 21:35:39,106 - INFO - ============================================================
+2025-06-12 21:35:39,106 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 192 --label_len 96 --pred_len 96 --enc_in 1 --dec_in 1 --c_out 1 --d_model 768 --n_heads 8 --e_layers 3 --d_layers 2 --d_ff 3072 --dropout 0.05 --activation gelu --embed timeF --batch_size 32 --learning_rate 5e-05 --train_epochs 80 --patience 15 --lradj cosine --gpu 0 --itr 1 --des prometheus_night_training_enhanced --moving_avg 96 --decomp_method moving_avg --use_norm 1 --factor 3 --down_sampling_layers 1 --down_sampling_method avg --down_sampling_window 2 --augmentation_ratio 1 --jitter --scaling --seed 2021 --timeenc 0 --use_gpu True --model DLinear --model_id DLinear_prometheus
+2025-06-12 21:35:39,106 - INFO - Начало обучения: 2025-06-12 21:35:39
+2025-06-12 21:35:43,620 - INFO - Время выполнения: 4.51 секунд
+2025-06-12 21:35:43,621 - ERROR - ❌ Ошибка при обучении модели DLinear
+2025-06-12 21:35:43,621 - ERROR - STDERR:
+2025-06-12 21:35:43,621 - ERROR - WN_SAMPLING_METHOD]
+              [--seg_len SEG_LEN] [--num_workers NUM_WORKERS] [--itr ITR]
+              [--train_epochs TRAIN_EPOCHS] [--batch_size BATCH_SIZE]
+              [--patience PATIENCE] [--learning_rate LEARNING_RATE]
+              [--des DES] [--loss LOSS] [--lradj LRADJ] [--use_amp]
+              [--use_gpu USE_GPU] [--gpu GPU] [--gpu_type GPU_TYPE]
+              [--use_multi_gpu] [--devices DEVICES]
+              [--p_hidden_dims P_HIDDEN_DIMS [P_HIDDEN_DIMS ...]]
+              [--p_hidden_layers P_HIDDEN_LAYERS] [--use_dtw USE_DTW]
+              [--augmentation_ratio AUGMENTATION_RATIO] [--seed SEED]
+              [--jitter] [--scaling] [--permutation] [--randompermutation]
+              [--magwarp] [--timewarp] [--windowslice] [--windowwarp]
+              [--rotation] [--spawner] [--dtwwarp] [--shapedtwwarp] [--wdba]
+              [--discdtw] [--discsdtw] [--extra_tag EXTRA_TAG]
+              [--patch_len PATCH_LEN]
+run.py: error: unrecognized arguments: --timeenc 0
+
+2025-06-12 21:35:43,621 - ERROR - STDOUT:
+2025-06-12 21:35:43,621 - ERROR - 
+2025-06-12 21:35:43,622 - INFO - 💾 Промежуточные результаты сохранены в prometheus_models_test_20250612_213539_results.json
+2025-06-12 21:35:43,622 - INFO - ⏳ Пауза 30 секунд перед следующим экспериментом...

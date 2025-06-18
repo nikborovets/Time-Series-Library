@@ -13,6 +13,8 @@ from sktime.datasets import load_from_tsfile_to_dataframe
 import warnings
 from utils.augmentation import run_augmentation_single
 
+from data_provider.prom_data_loader import fetch_frame
+
 warnings.filterwarnings('ignore')
 
 
@@ -68,6 +70,11 @@ class Dataset_ETT_hour(Dataset):
             data = self.scaler.transform(df_data.values)
         else:
             data = df_data.values
+
+        # Проверка и очистка NaN/inf значений
+        if np.isnan(data).any() or np.isinf(data).any():
+            print(f"WARNING: Found {np.isnan(data).sum()} NaN and {np.isinf(data).sum()} inf values, replacing with 0")
+            data = np.nan_to_num(data, nan=0.0, posinf=0.0, neginf=0.0)
 
         df_stamp = df_raw[['date']][border1:border2]
         df_stamp['date'] = pd.to_datetime(df_stamp.date)
@@ -161,6 +168,11 @@ class Dataset_ETT_minute(Dataset):
             data = self.scaler.transform(df_data.values)
         else:
             data = df_data.values
+
+        # Проверка и очистка NaN/inf значений
+        if np.isnan(data).any() or np.isinf(data).any():
+            print(f"WARNING: Found {np.isnan(data).sum()} NaN and {np.isinf(data).sum()} inf values, replacing with 0")
+            data = np.nan_to_num(data, nan=0.0, posinf=0.0, neginf=0.0)
 
         df_stamp = df_raw[['date']][border1:border2]
         df_stamp['date'] = pd.to_datetime(df_stamp.date)
@@ -266,6 +278,11 @@ class Dataset_Custom(Dataset):
             data = self.scaler.transform(df_data.values)
         else:
             data = df_data.values
+
+        # Проверка и очистка NaN/inf значений
+        if np.isnan(data).any() or np.isinf(data).any():
+            print(f"WARNING: Found {np.isnan(data).sum()} NaN and {np.isinf(data).sum()} inf values, replacing with 0")
+            data = np.nan_to_num(data, nan=0.0, posinf=0.0, neginf=0.0)
 
         df_stamp = df_raw[['date']][border1:border2]
         df_stamp['date'] = pd.to_datetime(df_stamp.date)
@@ -746,3 +763,133 @@ class UEAloader(Dataset):
 
     def __len__(self):
         return len(self.all_IDs)
+
+
+class Dataset_Prometheus(Dataset):
+    def __init__(self, args, root_path=None, flag='train', size=None,
+                 features='S', data_path=None,
+                 target='common_delayp90', scale=True, timeenc=0, freq='15s', seasonal_patterns=None):
+        # size [seq_len, label_len, pred_len]
+        self.args = args
+        # info
+        if size == None:
+            self.seq_len = 96
+            self.label_len = 48
+            self.pred_len = 96
+        else:
+            self.seq_len = size[0]
+            self.label_len = size[1]
+            self.pred_len = size[2]
+        # init
+        assert flag in ['train', 'test', 'val']
+        type_map = {'train': 0, 'val': 1, 'test': 2}
+        self.set_type = type_map[flag]
+
+        self.features = features
+        self.target = target
+        self.scale = scale
+        self.timeenc = timeenc
+        self.freq = freq
+                
+        self.fetch_frame = fetch_frame
+        self.__read_data__()
+
+    def __read_data__(self):
+        self.scaler = StandardScaler()
+        
+        # Fetch data from Prometheus using the existing data_loader
+        df_raw = self.fetch_frame(
+            start_date="2025-04-27 18:00:00",
+            end_date="2025-05-13 11:41:00",
+            use_cache=True,
+            verbose=True,
+        )
+        
+        # Reset index to make timestamp a column
+        df_raw = df_raw.reset_index()
+        df_raw.rename(columns={'ts': 'date'}, inplace=True)
+        
+        # Ensure we have the target column
+        if self.target not in df_raw.columns:
+            available_cols = [col for col in df_raw.columns if 'common_delayp90' in col]
+            if available_cols:
+                self.target = available_cols[0]
+                print(f"Target column '{self.target}' not found, using '{self.target}' instead")
+            else:
+                raise ValueError(f"No suitable target column found. Available columns: {df_raw.columns.tolist()}")
+
+        '''
+        df_raw.columns: ['date', ...(other features), target feature]
+        '''
+        cols = list(df_raw.columns)
+        cols.remove(self.target)
+        cols.remove('date')
+        df_raw = df_raw[['date'] + cols + [self.target]]
+        
+        # Split data: 70% train, 20% val, 10% test
+        num_train = int(len(df_raw) * 0.7)
+        num_test = int(len(df_raw) * 0.1)
+        num_vali = len(df_raw) - num_train - num_test
+        border1s = [0, num_train - self.seq_len, len(df_raw) - num_test - self.seq_len]
+        border2s = [num_train, num_train + num_vali, len(df_raw)]
+        border1 = border1s[self.set_type]
+        border2 = border2s[self.set_type]
+
+        if self.features == 'M' or self.features == 'MS':
+            cols_data = df_raw.columns[1:]
+            df_data = df_raw[cols_data]
+        elif self.features == 'S':
+            df_data = df_raw[[self.target]]
+
+        if self.scale:
+            train_data = df_data[border1s[0]:border2s[0]]
+            self.scaler.fit(train_data.values)
+            data = self.scaler.transform(df_data.values)
+        else:
+            data = df_data.values
+
+        # Проверка и очистка NaN/inf значений
+        if np.isnan(data).any() or np.isinf(data).any():
+            print(f"WARNING: Found {np.isnan(data).sum()} NaN and {np.isinf(data).sum()} inf values, replacing with 0")
+            data = np.nan_to_num(data, nan=0.0, posinf=0.0, neginf=0.0)
+
+        df_stamp = df_raw[['date']][border1:border2]
+        df_stamp['date'] = pd.to_datetime(df_stamp.date)
+        if self.timeenc == 0:
+            df_stamp['month'] = df_stamp.date.apply(lambda row: row.month, 1)
+            df_stamp['day'] = df_stamp.date.apply(lambda row: row.day, 1)
+            df_stamp['weekday'] = df_stamp.date.apply(lambda row: row.weekday(), 1)
+            df_stamp['hour'] = df_stamp.date.apply(lambda row: row.hour, 1)
+            df_stamp['minute'] = df_stamp.date.apply(lambda row: row.minute, 1)
+            df_stamp['second'] = df_stamp.date.apply(lambda row: row.second, 1)
+            data_stamp = df_stamp.drop(['date'], 1).values
+        elif self.timeenc == 1:
+            data_stamp = time_features(pd.to_datetime(df_stamp['date'].values), freq=self.freq)
+            data_stamp = data_stamp.transpose(1, 0)
+
+        self.data_x = data[border1:border2]
+        self.data_y = data[border1:border2]
+
+        if self.set_type == 0 and self.args.augmentation_ratio > 0:
+            self.data_x, self.data_y, augmentation_tags = run_augmentation_single(self.data_x, self.data_y, self.args)
+
+        self.data_stamp = data_stamp
+
+    def __getitem__(self, index):
+        s_begin = index
+        s_end = s_begin + self.seq_len
+        r_begin = s_end - self.label_len
+        r_end = r_begin + self.label_len + self.pred_len
+
+        seq_x = self.data_x[s_begin:s_end]
+        seq_y = self.data_y[r_begin:r_end]
+        seq_x_mark = self.data_stamp[s_begin:s_end]
+        seq_y_mark = self.data_stamp[r_begin:r_end]
+
+        return seq_x, seq_y, seq_x_mark, seq_y_mark
+
+    def __len__(self):
+        return len(self.data_x) - self.seq_len - self.pred_len + 1
+
+    def inverse_transform(self, data):
+        return self.scaler.inverse_transform(data)

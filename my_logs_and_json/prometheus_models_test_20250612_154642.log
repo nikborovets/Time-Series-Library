@@ -1,0 +1,366 @@
+2025-06-12 15:46:42,780 - INFO - 🚀 Начинаем тестирование моделей на данных из Prometheus
+2025-06-12 15:46:42,780 - INFO - Модели для тестирования: ['DLinear', 'NLinear', 'PatchTST', 'iTransformer', 'Autoformer', 'FEDformer', 'Informer', 'TimesNet', 'Crossformer', 'Transformer']
+2025-06-12 15:46:42,780 - INFO - Эпохи: 20, Batch size: 16
+2025-06-12 15:46:42,780 - INFO - GPU: Да, Таймаут: 7200s
+2025-06-12 15:46:42,780 - INFO - Данные: 90600 точек с 2025-04-27 18:00:00 по 2025-05-13 11:41:00
+2025-06-12 15:46:42,780 - INFO - Лог файл: prometheus_models_test_20250612_154642.log
+2025-06-12 15:46:42,780 - INFO - 
+📊 Прогресс: 1/10
+2025-06-12 15:46:42,780 - INFO - 
+============================================================
+2025-06-12 15:46:42,780 - INFO - Тестирование модели: DLinear
+2025-06-12 15:46:42,780 - INFO - ============================================================
+2025-06-12 15:46:42,780 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 96 --label_len 48 --pred_len 96 --enc_in 1 --dec_in 1 --c_out 1 --d_model 512 --n_heads 8 --e_layers 2 --d_layers 1 --d_ff 2048 --dropout 0.1 --activation gelu --embed timeF --batch_size 16 --learning_rate 0.0001 --train_epochs 20 --patience 5 --use_gpu true --gpu 0 --itr 1 --des prometheus_test --model DLinear --model_id DLinear_prometheus
+2025-06-12 15:46:42,780 - INFO - Начало обучения: 2025-06-12 15:46:42
+2025-06-12 15:49:05,790 - INFO - Время выполнения: 143.01 секунд
+2025-06-12 15:49:05,790 - INFO - ✅ Модель DLinear успешно обучена!
+2025-06-12 15:49:05,790 - INFO - STDOUT (последние 1000 символов):
+2025-06-12 15:49:05,790 - INFO - 3500, epoch: 7 | loss: 0.4942760
+	speed: 0.0041s/iter; left time: 211.1770s
+	iters: 3600, epoch: 7 | loss: 0.3123233
+	speed: 0.0031s/iter; left time: 159.8425s
+	iters: 3700, epoch: 7 | loss: 0.4601505
+	speed: 0.0028s/iter; left time: 143.8904s
+	iters: 3800, epoch: 7 | loss: 0.3186295
+	speed: 0.0042s/iter; left time: 216.4383s
+	iters: 3900, epoch: 7 | loss: 0.5253064
+	speed: 0.0032s/iter; left time: 164.8919s
+Epoch: 7 cost time: 14.32255220413208
+Epoch: 7, Steps: 3954 | Train Loss: 0.3984246 Vali Loss: 0.3994758 Test Loss: 0.6890777
+EarlyStopping counter: 5 out of 5
+Early stopping
+>>>>>>>testing : long_term_forecast_DLinear_prometheus_DLinear_prometheus_ftS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_prometheus_test_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+WARNING: Found 2 NaN and 0 inf values, replacing with 0
+test 8969
+test shape: (8969, 96, 1) (8969, 96, 1)
+test shape: (8969, 96, 1) (8969, 96, 1)
+mse:0.6885898113250732, mae:0.5761164426803589, dtw:Not calculated
+
+2025-06-12 15:49:05,791 - INFO - 💾 Промежуточные результаты сохранены в prometheus_models_test_20250612_154642_results.json
+2025-06-12 15:49:05,791 - INFO - ⏳ Пауза 30 секунд перед следующим экспериментом...
+2025-06-12 15:49:35,821 - INFO - 
+📊 Прогресс: 2/10
+2025-06-12 15:49:35,821 - INFO - 
+============================================================
+2025-06-12 15:49:35,822 - INFO - Тестирование модели: NLinear
+2025-06-12 15:49:35,822 - INFO - ============================================================
+2025-06-12 15:49:35,822 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 96 --label_len 48 --pred_len 96 --enc_in 1 --dec_in 1 --c_out 1 --d_model 512 --n_heads 8 --e_layers 2 --d_layers 1 --d_ff 2048 --dropout 0.1 --activation gelu --embed timeF --batch_size 16 --learning_rate 0.0001 --train_epochs 20 --patience 5 --use_gpu true --gpu 0 --itr 1 --des prometheus_test --model NLinear --model_id NLinear_prometheus
+2025-06-12 15:49:35,822 - INFO - Начало обучения: 2025-06-12 15:49:35
+2025-06-12 15:49:40,334 - INFO - Время выполнения: 4.51 секунд
+2025-06-12 15:49:40,334 - ERROR - ❌ Ошибка при обучении модели NLinear
+2025-06-12 15:49:40,334 - ERROR - STDERR:
+2025-06-12 15:49:40,334 - ERROR - Traceback (most recent call last):
+  File "/home/borovets.av/kolya/Time-Series-Library/run.py", line 179, in <module>
+    exp = Exp(args)  # set experiments
+  File "/home/borovets.av/kolya/Time-Series-Library/exp/exp_long_term_forecasting.py", line 20, in __init__
+    super(Exp_Long_Term_Forecast, self).__init__(args)
+  File "/home/borovets.av/kolya/Time-Series-Library/exp/exp_basic.py", line 49, in __init__
+    self.model = self._build_model().to(self.device)
+  File "/home/borovets.av/kolya/Time-Series-Library/exp/exp_long_term_forecasting.py", line 23, in _build_model
+    model = self.model_dict[self.args.model].Model(self.args).float()
+KeyError: 'NLinear'
+
+2025-06-12 15:49:40,334 - ERROR - STDOUT:
+2025-06-12 15:49:40,334 - ERROR - g Avg:         25                  Factor:             1                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              timeF               Activation:         gelu                
+
+[1mRun Parameters[0m
+  Num Workers:        10                  Itr:                1                   
+  Train Epochs:       20                  Batch Size:         16                  
+  Patience:           5                   Learning Rate:      0.0001              
+  Des:                prometheus_test     Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            1                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use GPU: cuda:0
+
+2025-06-12 15:49:40,350 - INFO - 💾 Промежуточные результаты сохранены в prometheus_models_test_20250612_154642_results.json
+2025-06-12 15:49:40,350 - INFO - ⏳ Пауза 30 секунд перед следующим экспериментом...
+2025-06-12 15:50:10,379 - INFO - 
+📊 Прогресс: 3/10
+2025-06-12 15:50:10,379 - INFO - 
+============================================================
+2025-06-12 15:50:10,379 - INFO - Тестирование модели: PatchTST
+2025-06-12 15:50:10,380 - INFO - ============================================================
+2025-06-12 15:50:10,380 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 96 --label_len 48 --pred_len 96 --enc_in 1 --dec_in 1 --c_out 1 --d_model 512 --n_heads 8 --e_layers 2 --d_layers 1 --d_ff 2048 --dropout 0.1 --activation gelu --embed timeF --batch_size 16 --learning_rate 0.0001 --train_epochs 20 --patience 5 --use_gpu true --gpu 0 --itr 1 --des prometheus_test --model PatchTST --model_id PatchTST_prometheus --patch_len 16
+2025-06-12 15:50:10,380 - INFO - Начало обучения: 2025-06-12 15:50:10
+2025-06-12 16:04:10,631 - INFO - Время выполнения: 840.25 секунд
+2025-06-12 16:04:10,645 - INFO - ✅ Модель PatchTST успешно обучена!
+2025-06-12 16:04:10,646 - INFO - STDOUT (последние 1000 символов):
+2025-06-12 16:04:10,646 - INFO - 0, epoch: 8 | loss: 0.2378010
+	speed: 0.0196s/iter; left time: 939.9998s
+	iters: 3600, epoch: 8 | loss: 0.7693057
+	speed: 0.0204s/iter; left time: 976.5597s
+	iters: 3700, epoch: 8 | loss: 0.3067765
+	speed: 0.0205s/iter; left time: 979.6506s
+	iters: 3800, epoch: 8 | loss: 0.3548047
+	speed: 0.0197s/iter; left time: 938.2988s
+	iters: 3900, epoch: 8 | loss: 0.3865280
+	speed: 0.0215s/iter; left time: 1019.1557s
+Epoch: 8 cost time: 80.92926621437073
+Epoch: 8, Steps: 3954 | Train Loss: 0.3887608 Vali Loss: 0.4153213 Test Loss: 0.7075265
+EarlyStopping counter: 5 out of 5
+Early stopping
+>>>>>>>testing : long_term_forecast_PatchTST_prometheus_PatchTST_prometheus_ftS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_prometheus_test_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+WARNING: Found 2 NaN and 0 inf values, replacing with 0
+test 8969
+test shape: (8969, 96, 1) (8969, 96, 1)
+test shape: (8969, 96, 1) (8969, 96, 1)
+mse:0.6910369396209717, mae:0.5750927925109863, dtw:Not calculated
+
+2025-06-12 16:04:10,687 - INFO - 💾 Промежуточные результаты сохранены в prometheus_models_test_20250612_154642_results.json
+2025-06-12 16:04:10,688 - INFO - ⏳ Пауза 30 секунд перед следующим экспериментом...
+2025-06-12 16:04:40,715 - INFO - 
+📊 Прогресс: 4/10
+2025-06-12 16:04:40,715 - INFO - 
+============================================================
+2025-06-12 16:04:40,715 - INFO - Тестирование модели: iTransformer
+2025-06-12 16:04:40,715 - INFO - ============================================================
+2025-06-12 16:04:40,715 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 96 --label_len 48 --pred_len 96 --enc_in 1 --dec_in 1 --c_out 1 --d_model 512 --n_heads 8 --e_layers 2 --d_layers 1 --d_ff 2048 --dropout 0.1 --activation gelu --embed timeF --batch_size 16 --learning_rate 0.0001 --train_epochs 20 --patience 5 --use_gpu true --gpu 0 --itr 1 --des prometheus_test --model iTransformer --model_id iTransformer_prometheus
+2025-06-12 16:04:40,716 - INFO - Начало обучения: 2025-06-12 16:04:40
+2025-06-12 16:12:23,783 - INFO - Время выполнения: 463.07 секунд
+2025-06-12 16:12:23,785 - INFO - ✅ Модель iTransformer успешно обучена!
+2025-06-12 16:12:23,785 - INFO - STDOUT (последние 1000 символов):
+2025-06-12 16:12:23,786 - INFO - : 6 | loss: 0.2393032
+	speed: 0.0105s/iter; left time: 583.4488s
+	iters: 3600, epoch: 6 | loss: 0.2593911
+	speed: 0.0103s/iter; left time: 572.6130s
+	iters: 3700, epoch: 6 | loss: 0.3356367
+	speed: 0.0104s/iter; left time: 578.0820s
+	iters: 3800, epoch: 6 | loss: 0.1883175
+	speed: 0.0104s/iter; left time: 576.8559s
+	iters: 3900, epoch: 6 | loss: 0.3912406
+	speed: 0.0103s/iter; left time: 571.4892s
+Epoch: 6 cost time: 43.986159563064575
+Epoch: 6, Steps: 3954 | Train Loss: 0.3433232 Vali Loss: 0.4670800 Test Loss: 0.7490387
+EarlyStopping counter: 5 out of 5
+Early stopping
+>>>>>>>testing : long_term_forecast_iTransformer_prometheus_iTransformer_prometheus_ftS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_prometheus_test_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+WARNING: Found 2 NaN and 0 inf values, replacing with 0
+test 8969
+test shape: (8969, 96, 1) (8969, 96, 1)
+test shape: (8969, 96, 1) (8969, 96, 1)
+mse:0.7225112318992615, mae:0.5756489634513855, dtw:Not calculated
+
+2025-06-12 16:12:23,794 - INFO - 💾 Промежуточные результаты сохранены в prometheus_models_test_20250612_154642_results.json
+2025-06-12 16:12:23,794 - INFO - ⏳ Пауза 30 секунд перед следующим экспериментом...
+2025-06-12 16:12:53,823 - INFO - 
+📊 Прогресс: 5/10
+2025-06-12 16:12:53,823 - INFO - 
+============================================================
+2025-06-12 16:12:53,823 - INFO - Тестирование модели: Autoformer
+2025-06-12 16:12:53,823 - INFO - ============================================================
+2025-06-12 16:12:53,824 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 96 --label_len 48 --pred_len 96 --enc_in 1 --dec_in 1 --c_out 1 --d_model 512 --n_heads 8 --e_layers 2 --d_layers 1 --d_ff 2048 --dropout 0.1 --activation gelu --embed timeF --batch_size 16 --learning_rate 0.0001 --train_epochs 20 --patience 5 --use_gpu true --gpu 0 --itr 1 --des prometheus_test --model Autoformer --model_id Autoformer_prometheus
+2025-06-12 16:12:53,824 - INFO - Начало обучения: 2025-06-12 16:12:53
+2025-06-12 17:05:25,004 - INFO - Время выполнения: 3151.18 секунд
+2025-06-12 17:05:25,004 - INFO - ✅ Модель Autoformer успешно обучена!
+2025-06-12 17:05:25,004 - INFO - STDOUT (последние 1000 символов):
+2025-06-12 17:05:25,004 - INFO -  7 | loss: 0.2618564
+	speed: 0.0318s/iter; left time: 1651.1305s
+	iters: 3600, epoch: 7 | loss: 0.5267107
+	speed: 0.0337s/iter; left time: 1744.5701s
+	iters: 3700, epoch: 7 | loss: 0.3269228
+	speed: 0.0302s/iter; left time: 1561.3299s
+	iters: 3800, epoch: 7 | loss: 0.3542708
+	speed: 0.0301s/iter; left time: 1553.4412s
+	iters: 3900, epoch: 7 | loss: 0.3404333
+	speed: 0.0302s/iter; left time: 1555.4186s
+Epoch: 7 cost time: 125.22782850265503
+Epoch: 7, Steps: 3954 | Train Loss: 0.3777834 Vali Loss: 0.4457178 Test Loss: 0.7378209
+EarlyStopping counter: 5 out of 5
+Early stopping
+>>>>>>>testing : long_term_forecast_Autoformer_prometheus_Autoformer_prometheus_ftS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_prometheus_test_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+WARNING: Found 2 NaN and 0 inf values, replacing with 0
+test 8969
+test shape: (8969, 96, 1) (8969, 96, 1)
+test shape: (8969, 96, 1) (8969, 96, 1)
+mse:0.7296870350837708, mae:0.5949749946594238, dtw:Not calculated
+
+2025-06-12 17:05:25,028 - INFO - 💾 Промежуточные результаты сохранены в prometheus_models_test_20250612_154642_results.json
+2025-06-12 17:05:25,028 - INFO - ⏳ Пауза 30 секунд перед следующим экспериментом...
+2025-06-12 17:05:55,056 - INFO - 
+📊 Прогресс: 6/10
+2025-06-12 17:05:55,056 - INFO - 
+============================================================
+2025-06-12 17:05:55,056 - INFO - Тестирование модели: FEDformer
+2025-06-12 17:05:55,056 - INFO - ============================================================
+2025-06-12 17:05:55,056 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 96 --label_len 48 --pred_len 96 --enc_in 1 --dec_in 1 --c_out 1 --d_model 512 --n_heads 8 --e_layers 2 --d_layers 1 --d_ff 2048 --dropout 0.1 --activation gelu --embed timeF --batch_size 16 --learning_rate 0.0001 --train_epochs 20 --patience 5 --use_gpu true --gpu 0 --itr 1 --des prometheus_test --model FEDformer --model_id FEDformer_prometheus --version Fourier --mode_select random --modes 32
+2025-06-12 17:05:55,056 - INFO - Начало обучения: 2025-06-12 17:05:55
+2025-06-12 17:06:01,911 - INFO - Время выполнения: 6.85 секунд
+2025-06-12 17:06:01,911 - ERROR - ❌ Ошибка при обучении модели FEDformer
+2025-06-12 17:06:01,911 - ERROR - STDERR:
+2025-06-12 17:06:01,911 - ERROR - eg_len SEG_LEN] [--num_workers NUM_WORKERS] [--itr ITR]
+              [--train_epochs TRAIN_EPOCHS] [--batch_size BATCH_SIZE]
+              [--patience PATIENCE] [--learning_rate LEARNING_RATE]
+              [--des DES] [--loss LOSS] [--lradj LRADJ] [--use_amp]
+              [--use_gpu USE_GPU] [--gpu GPU] [--gpu_type GPU_TYPE]
+              [--use_multi_gpu] [--devices DEVICES]
+              [--p_hidden_dims P_HIDDEN_DIMS [P_HIDDEN_DIMS ...]]
+              [--p_hidden_layers P_HIDDEN_LAYERS] [--use_dtw USE_DTW]
+              [--augmentation_ratio AUGMENTATION_RATIO] [--seed SEED]
+              [--jitter] [--scaling] [--permutation] [--randompermutation]
+              [--magwarp] [--timewarp] [--windowslice] [--windowwarp]
+              [--rotation] [--spawner] [--dtwwarp] [--shapedtwwarp] [--wdba]
+              [--discdtw] [--discsdtw] [--extra_tag EXTRA_TAG]
+              [--patch_len PATCH_LEN]
+run.py: error: unrecognized arguments: --version Fourier --mode_select random --modes 32
+
+2025-06-12 17:06:01,911 - ERROR - STDOUT:
+2025-06-12 17:06:01,911 - ERROR - 
+2025-06-12 17:06:01,924 - INFO - 💾 Промежуточные результаты сохранены в prometheus_models_test_20250612_154642_results.json
+2025-06-12 17:06:01,925 - INFO - ⏳ Пауза 30 секунд перед следующим экспериментом...
+2025-06-12 17:06:31,951 - INFO - 
+📊 Прогресс: 7/10
+2025-06-12 17:06:31,951 - INFO - 
+============================================================
+2025-06-12 17:06:31,951 - INFO - Тестирование модели: Informer
+2025-06-12 17:06:31,951 - INFO - ============================================================
+2025-06-12 17:06:31,951 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 96 --label_len 48 --pred_len 96 --enc_in 1 --dec_in 1 --c_out 1 --d_model 512 --n_heads 8 --e_layers 2 --d_layers 1 --d_ff 2048 --dropout 0.1 --activation gelu --embed timeF --batch_size 16 --learning_rate 0.0001 --train_epochs 20 --patience 5 --use_gpu true --gpu 0 --itr 1 --des prometheus_test --model Informer --model_id Informer_prometheus
+2025-06-12 17:06:31,952 - INFO - Начало обучения: 2025-06-12 17:06:31
+2025-06-12 17:21:09,913 - INFO - Время выполнения: 877.96 секунд
+2025-06-12 17:21:09,913 - INFO - ✅ Модель Informer успешно обучена!
+2025-06-12 17:21:09,914 - INFO - STDOUT (последние 1000 символов):
+2025-06-12 17:21:09,914 - INFO - och: 6 | loss: 0.2316678
+	speed: 0.0307s/iter; left time: 1712.8727s
+	iters: 3600, epoch: 6 | loss: 0.3535272
+	speed: 0.0344s/iter; left time: 1918.4597s
+	iters: 3700, epoch: 6 | loss: 0.3762681
+	speed: 0.0317s/iter; left time: 1761.7571s
+	iters: 3800, epoch: 6 | loss: 0.2163356
+	speed: 0.0291s/iter; left time: 1617.8104s
+	iters: 3900, epoch: 6 | loss: 0.2946200
+	speed: 0.0296s/iter; left time: 1639.1144s
+Epoch: 6 cost time: 120.14356803894043
+Epoch: 6, Steps: 3954 | Train Loss: 0.3229923 Vali Loss: 0.5660184 Test Loss: 0.9477484
+EarlyStopping counter: 5 out of 5
+Early stopping
+>>>>>>>testing : long_term_forecast_Informer_prometheus_Informer_prometheus_ftS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_prometheus_test_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+WARNING: Found 2 NaN and 0 inf values, replacing with 0
+test 8969
+test shape: (8969, 96, 1) (8969, 96, 1)
+test shape: (8969, 96, 1) (8969, 96, 1)
+mse:0.6768319010734558, mae:0.5861292481422424, dtw:Not calculated
+
+2025-06-12 17:21:09,951 - INFO - 💾 Промежуточные результаты сохранены в prometheus_models_test_20250612_154642_results.json
+2025-06-12 17:21:09,951 - INFO - ⏳ Пауза 30 секунд перед следующим экспериментом...
+2025-06-12 17:21:39,981 - INFO - 
+📊 Прогресс: 8/10
+2025-06-12 17:21:39,982 - INFO - 
+============================================================
+2025-06-12 17:21:39,982 - INFO - Тестирование модели: TimesNet
+2025-06-12 17:21:39,982 - INFO - ============================================================
+2025-06-12 17:21:39,982 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 96 --label_len 48 --pred_len 96 --enc_in 1 --dec_in 1 --c_out 1 --d_model 512 --n_heads 8 --e_layers 2 --d_layers 1 --d_ff 2048 --dropout 0.1 --activation gelu --embed timeF --batch_size 16 --learning_rate 0.0001 --train_epochs 20 --patience 5 --use_gpu true --gpu 0 --itr 1 --des prometheus_test --model TimesNet --model_id TimesNet_prometheus --top_k 5 --num_kernels 6
+2025-06-12 17:21:39,982 - INFO - Начало обучения: 2025-06-12 17:21:39
+2025-06-12 17:22:15,090 - INFO - Время выполнения: 35.11 секунд
+2025-06-12 17:22:15,090 - ERROR - ❌ Ошибка при обучении модели TimesNet
+2025-06-12 17:22:15,090 - ERROR - STDERR:
+2025-06-12 17:22:15,090 - ERROR - in backward
+    _engine_run_backward(
+  File "/home/borovets.av/kolya/Time-Series-Library/.venv/lib/python3.10/site-packages/torch/autograd/graph.py", line 769, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 484.00 MiB. GPU 0 has a total capacity of 10.75 GiB of which 127.62 MiB is free. Process 2817595 has 154.00 MiB memory in use. Process 1063448 has 156.00 MiB memory in use. Process 1401624 has 226.00 MiB memory in use. Including non-PyTorch memory, this process has 10.10 GiB memory in use. Of the allocated memory 9.27 GiB is allocated by PyTorch, and 643.53 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-06-12 17:22:15,090 - ERROR - STDOUT:
+2025-06-12 17:22:15,090 - ERROR -          16                  
+  Patience:           5                   Learning Rate:      0.0001              
+  Des:                prometheus_test     Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            1                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_TimesNet_prometheus_TimesNet_prometheus_ftS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_prometheus_test_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+WARNING: Found 2 NaN and 0 inf values, replacing with 0
+train 63259
+WARNING: Found 2 NaN and 0 inf values, replacing with 0
+val 18034
+WARNING: Found 2 NaN and 0 inf values, replacing with 0
+test 8969
+
+2025-06-12 17:22:15,103 - INFO - 💾 Промежуточные результаты сохранены в prometheus_models_test_20250612_154642_results.json
+2025-06-12 17:22:15,103 - INFO - ⏳ Пауза 30 секунд перед следующим экспериментом...
+2025-06-12 17:22:45,131 - INFO - 
+📊 Прогресс: 9/10
+2025-06-12 17:22:45,131 - INFO - 
+============================================================
+2025-06-12 17:22:45,131 - INFO - Тестирование модели: Crossformer
+2025-06-12 17:22:45,131 - INFO - ============================================================
+2025-06-12 17:22:45,131 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 96 --label_len 48 --pred_len 96 --enc_in 1 --dec_in 1 --c_out 1 --d_model 512 --n_heads 8 --e_layers 2 --d_layers 1 --d_ff 2048 --dropout 0.1 --activation gelu --embed timeF --batch_size 16 --learning_rate 0.0001 --train_epochs 20 --patience 5 --use_gpu true --gpu 0 --itr 1 --des prometheus_test --model Crossformer --model_id Crossformer_prometheus --seg_len 24
+2025-06-12 17:22:45,132 - INFO - Начало обучения: 2025-06-12 17:22:45
+2025-06-12 18:00:51,905 - INFO - Время выполнения: 2286.77 секунд
+2025-06-12 18:00:51,905 - INFO - ✅ Модель Crossformer успешно обучена!
+2025-06-12 18:00:51,905 - INFO - STDOUT (последние 1000 символов):
+2025-06-12 18:00:51,906 - INFO -  | loss: 0.2465366
+	speed: 0.0680s/iter; left time: 2989.9574s
+	iters: 3600, epoch: 9 | loss: 0.3288992
+	speed: 0.0628s/iter; left time: 2752.0696s
+	iters: 3700, epoch: 9 | loss: 0.3579692
+	speed: 0.0656s/iter; left time: 2869.9061s
+	iters: 3800, epoch: 9 | loss: 0.4727436
+	speed: 0.0527s/iter; left time: 2299.4767s
+	iters: 3900, epoch: 9 | loss: 0.4723806
+	speed: 0.0465s/iter; left time: 2025.9071s
+Epoch: 9 cost time: 229.12241101264954
+Epoch: 9, Steps: 3954 | Train Loss: 0.3645009 Vali Loss: 0.4483351 Test Loss: 0.8482621
+EarlyStopping counter: 5 out of 5
+Early stopping
+>>>>>>>testing : long_term_forecast_Crossformer_prometheus_Crossformer_prometheus_ftS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_prometheus_test_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+WARNING: Found 2 NaN and 0 inf values, replacing with 0
+test 8969
+test shape: (8969, 96, 1) (8969, 96, 1)
+test shape: (8969, 96, 1) (8969, 96, 1)
+mse:0.7619789838790894, mae:0.6067240834236145, dtw:Not calculated
+
+2025-06-12 18:00:51,923 - INFO - 💾 Промежуточные результаты сохранены в prometheus_models_test_20250612_154642_results.json
+2025-06-12 18:00:51,923 - INFO - ⏳ Пауза 30 секунд перед следующим экспериментом...
+2025-06-12 18:01:21,951 - INFO - 
+📊 Прогресс: 10/10
+2025-06-12 18:01:21,951 - INFO - 
+============================================================
+2025-06-12 18:01:21,951 - INFO - Тестирование модели: Transformer
+2025-06-12 18:01:21,951 - INFO - ============================================================
+2025-06-12 18:01:21,952 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 96 --label_len 48 --pred_len 96 --enc_in 1 --dec_in 1 --c_out 1 --d_model 512 --n_heads 8 --e_layers 2 --d_layers 1 --d_ff 2048 --dropout 0.1 --activation gelu --embed timeF --batch_size 16 --learning_rate 0.0001 --train_epochs 20 --patience 5 --use_gpu true --gpu 0 --itr 1 --des prometheus_test --model Transformer --model_id Transformer_prometheus
+2025-06-12 18:01:21,952 - INFO - Начало обучения: 2025-06-12 18:01:21
+2025-06-12 18:47:10,507 - INFO - Время выполнения: 2748.56 секунд
+2025-06-12 18:47:10,508 - INFO - ✅ Модель Transformer успешно обучена!
+2025-06-12 18:47:10,508 - INFO - STDOUT (последние 1000 символов):
+2025-06-12 18:47:10,508 - INFO - 8 | loss: 0.2619059
+	speed: 0.0988s/iter; left time: 4732.7823s
+	iters: 3600, epoch: 8 | loss: 0.2556935
+	speed: 0.1001s/iter; left time: 4785.5366s
+	iters: 3700, epoch: 8 | loss: 0.2736695
+	speed: 0.1068s/iter; left time: 5093.2527s
+	iters: 3800, epoch: 8 | loss: 0.2135686
+	speed: 0.1068s/iter; left time: 5082.7224s
+	iters: 3900, epoch: 8 | loss: 0.1375732
+	speed: 0.0920s/iter; left time: 4371.5542s
+Epoch: 8 cost time: 212.3582854270935
+Epoch: 8, Steps: 3954 | Train Loss: 0.2335315 Vali Loss: 0.5895829 Test Loss: 1.0379027
+EarlyStopping counter: 5 out of 5
+Early stopping
+>>>>>>>testing : long_term_forecast_Transformer_prometheus_Transformer_prometheus_ftS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_prometheus_test_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+WARNING: Found 2 NaN and 0 inf values, replacing with 0
+test 8969
+test shape: (8969, 96, 1) (8969, 96, 1)
+test shape: (8969, 96, 1) (8969, 96, 1)
+mse:0.8892574310302734, mae:0.6542598605155945, dtw:Not calculated
+
+2025-06-12 18:47:10,520 - INFO - 💾 Промежуточные результаты сохранены в prometheus_models_test_20250612_154642_results.json
+2025-06-12 18:47:10,521 - INFO - 
+================================================================================
+2025-06-12 18:47:10,521 - INFO - 📈 ИТОГОВЫЙ ОТЧЕТ
+2025-06-12 18:47:10,521 - INFO - ================================================================================
+2025-06-12 18:47:10,521 - INFO - Общее время выполнения: 10827.74 секунд (180.5 минут)
+2025-06-12 18:47:10,521 - INFO - 🎯 Финальные результаты сохранены в prometheus_models_test_20250612_154642_results.json

@@ -1,0 +1,56 @@
+2025-06-13 07:46:20,401 - INFO - 🚀 Начинаем ОПТИМИЗИРОВАННОЕ тестирование моделей на данных из Prometheus
+2025-06-13 07:46:20,401 - INFO - Модели для тестирования: ['DLinear', 'LightTS', 'PatchTST', 'iTransformer', 'TimesNet']
+2025-06-13 07:46:20,401 - INFO - Оптимизированные параметры:
+2025-06-13 07:46:20,401 - INFO -   seq_len: 48 (12 минут)
+2025-06-13 07:46:20,402 - INFO -   pred_len: 24 (6 минут)
+2025-06-13 07:46:20,402 - INFO -   batch_size: 64
+2025-06-13 07:46:20,402 - INFO -   learning_rate: 0.0001
+2025-06-13 07:46:20,402 - INFO -   epochs: 50
+2025-06-13 07:46:20,402 - INFO - Лог файл: prometheus_optimized_test_20250613_074620.log
+2025-06-13 07:46:20,402 - INFO - 
+📊 Прогресс: 1/5
+2025-06-13 07:46:20,402 - INFO - 
+============================================================
+2025-06-13 07:46:20,402 - INFO - Тестирование модели: DLinear
+2025-06-13 07:46:20,402 - INFO - ============================================================
+2025-06-13 07:46:20,402 - INFO - Команда: python run.py --task_name long_term_forecast --is_training 1 --data prometheus --root_path ./ --data_path  --features S --target common_delayp90 --freq 15s --checkpoints ./checkpoints/ --seq_len 48 --label_len 24 --pred_len 24 --enc_in 1 --dec_in 1 --c_out 1 --d_model 256 --n_heads 4 --e_layers 2 --d_layers 1 --d_ff 1024 --dropout 0.1 --activation gelu --embed timeF --batch_size 64 --learning_rate 0.0001 --train_epochs 50 --patience 10 --lradj cosine --gpu 0 --itr 1 --des prometheus_optimized_highfreq --moving_avg 11 --decomp_method moving_avg --use_norm 1 --factor 5 --augmentation_ratio 1 --jitter --scaling --seed 2021 --use_gpu --expand 2 --d_conv 4 --model DLinear --model_id DLinear_prometheus_optimized
+2025-06-13 07:46:20,402 - INFO - Начало обучения: 2025-06-13 07:46:20
+2025-06-13 07:46:25,113 - INFO - Время выполнения: 4.71 секунд
+2025-06-13 07:46:25,113 - ERROR - ❌ Ошибка при обучении модели DLinear
+2025-06-13 07:46:25,113 - ERROR - STDERR: usage: run.py [-h] --task_name TASK_NAME --is_training IS_TRAINING --model_id
+              MODEL_ID --model MODEL --data DATA [--root_path ROOT_PATH]
+              [--data_path DATA_PATH] [--features FEATURES] [--target TARGET]
+              [--freq FREQ] [--checkpoints CHECKPOINTS] [--seq_len SEQ_LEN]
+              [--label_len LABEL_LEN] [--pred_len PRED_LEN]
+              [--seasonal_patterns SEASONAL_PATTERNS] [--inverse]
+              [--mask_rate MASK_RATE] [--anomaly_ratio ANOMALY_RATIO]
+              [--expand EXPAND] [--d_conv D_CONV] [--top_k TOP_K]
+              [--num_kernels NUM_KERNELS] [--enc_in ENC_IN] [--dec_in DEC_IN]
+              [--c_out C_OUT] [--d_model D_MODEL] [--n_heads N_HEADS]
+              [--e_layers E_LAYERS] [--d_layers D_LAYERS] [--d_ff D_FF]
+              [--moving_avg MOVING_AVG] [--factor FACTOR] [--distil]
+              [--dropout DROPOUT] [--embed EMBED] [--activation ACTIVATION]
+              [--channel_independence CHANNEL_INDEPENDENCE]
+              [--decomp_method DECOMP_METHOD] [--use_norm USE_NORM]
+              [--down_sampling_layers DOWN_SAMPLING_LAYERS]
+              [--down_sampling_window DOWN_SAMPLING_WINDOW]
+              [--down_sampling_method DOWN_SAMPLING_METHOD]
+              [--seg_len SEG_LEN] [--num_workers NUM_WORKERS] [--itr ITR]
+              [--train_epochs TRAIN_EPOCHS] [--batch_size BATCH_SIZE]
+              [--patience PATIENCE] [--learning_rate LEARNING_RATE]
+              [--des DES] [--loss LOSS] [--lradj LRADJ] [--use_amp]
+              [--use_gpu USE_GPU] [--gpu GPU] [--gpu_type GPU_TYPE]
+              [--use_multi_gpu] [--devices DEVICES]
+              [--p_hidden_dims P_HIDDEN_DIMS [P_HIDDEN_DIMS ...]]
+              [--p_hidden_layers P_HIDDEN_LAYERS] [--use_dtw USE_DTW]
+              [--augmentation_ratio AUGMENTATION_RATIO] [--seed SEED]
+              [--jitter] [--scaling] [--permutation] [--randompermutation]
+              [--magwarp] [--timewarp] [--windowslice] [--windowwarp]
+              [--rotation] [--spawner] [--dtwwarp] [--shapedtwwarp] [--wdba]
+              [--discdtw] [--discsdtw] [--extra_tag EXTRA_TAG]
+              [--patch_len PATCH_LEN]
+run.py: error: argument --use_gpu: expected one argument
+
+2025-06-13 07:46:25,113 - ERROR - STDOUT: 
+2025-06-13 07:46:25,138 - INFO - 💾 Промежуточные результаты сохранены в prometheus_optimized_test_20250613_074620_results.json
+2025-06-13 07:46:25,138 - INFO - ⏳ Пауза 10 секунд перед следующим экспериментом...
